@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/repcodeigniter/prueba/';
+$config['base_url'] = 'https://ornate-ganache-1939ae.netlify.app/';
 
 /*
 |--------------------------------------------------------------------------
