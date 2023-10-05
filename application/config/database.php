@@ -74,7 +74,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql://root:4btn1NtwKDtYumtf1mze@containers-us-west-70.railway.app:8060/railway',
+	'dsn'	=> '',
 	'hostname' => 'containers-us-west-70.railway.app',
 	'username' => 'root',
 	'password' => '4btn1NtwKDtYumtf1mze',
