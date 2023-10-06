@@ -16,9 +16,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <div class="container-fluid">
         <div class="container-sm d-flex justify-content-between mb-3 mt-5">
             <h3>Registro de Personas</h3>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formCreate" id="btnModal">
-                Agregar
-            </button>
+            <button type="button" id="btnCreate" class="btn btn-primary">Agregar</button>
+            <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#formCreate" id="btnModal"></button>
         </div>
         <div id="view-personas" class="container-sm mb-5 mt-4"></div>
 
@@ -49,10 +48,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </form>
                 </div>
             </div>
+            <div class="modal-dialog modal-dialog-centered" id="dialog-content-update"></div>
         </div>
     </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />

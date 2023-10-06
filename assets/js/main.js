@@ -6,7 +6,15 @@ window.onload = function () {
 	$("#form-create").submit((e) => {
 		createPersona(e);
 	});
+	$("#btnCreate").click(() => viewFormCreate());
 };
+
+function viewFormCreate() {
+	console.log("entro");
+	$("#dialog-content-update").css("display", "none");
+	$("#dialog-content").css("display", "flex");
+	$("#btnModal").click();
+}
 
 function createPersona(e) {
 	e.preventDefault();
@@ -14,7 +22,6 @@ function createPersona(e) {
 	const apellidop = e.target.apellidop.value;
 	const apellidom = e.target.apellidom.value;
 	const edad = e.target.edad.value;
-
 	const xml = new XMLHttpRequest();
 	xml.open("POST", "persona/createpersona");
 	xml.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -31,12 +38,20 @@ function createPersona(e) {
 	xml.onreadystatechange = function () {
 		if (this.readyState == 4) {
 			if (Number(this.responseText) == 1) {
-				console.log("exito");
+				Swal.fire({
+					position: "top-end",
+					icon: "success",
+					title: "Registro creado correctamente",
+					showConfirmButton: false,
+					timer: 1500,
+				});
 				cargarLista();
-				e.target.reset();
-				e.target.nombre.focus();
+				setTimeout(() => {
+					e.target.reset();
+					e.target.nombre.focus();
+				}, 1000);
 			} else {
-				console.log("error");
+				console.log(this.responseText);
 			}
 		}
 	};
@@ -61,7 +76,9 @@ function viewFormUpate(id) {
 	xml.onreadystatechange = function () {
 		if (this.readyState == 4) {
 			$("#btnModal").click();
-			$("#dialog-content").html(this.responseText);
+			$("#dialog-content").css("display", "none");
+			$("#dialog-content-update").css("display", "flex");
+			$("#dialog-content-update").html(this.responseText);
 			$("#form-update").submit((e) => {
 				updatePerson(e);
 			});
@@ -94,10 +111,19 @@ function updatePerson(e) {
 	xml.onreadystatechange = function () {
 		if (this.readyState == 4) {
 			if (Number(this.responseText) == 1) {
+				Swal.fire({
+					position: "top-end",
+					icon: "success",
+					title: "Registro editado correctamente",
+					showConfirmButton: false,
+					timer: 1500,
+				});
 				cargarLista();
-				$("#formCreate").modal("toggle");
+				setTimeout(() => {
+					$("#formCreate").modal("toggle");
+				}, 2000);
 			} else {
-				console.log("error");
+				console.log(this.responseText);
 			}
 		}
 	};
@@ -123,7 +149,7 @@ function deletePerson(id) {
 					if (Number(this.responseText) == 1) {
 						$("#item" + id).remove();
 					} else {
-						console.log("error");
+						console.log(this.responseText);
 					}
 				}
 			};
